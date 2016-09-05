@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { ContactsAppRoutes } from './app.routes';
 import { ContactsService } from './service/contacts.service';
 import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
+import { HttpModule } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { ContactsDetailComponent } from './contacts-detail/contacts-detail.compo
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ContactsAppRoutes)
+    RouterModule.forRoot(ContactsAppRoutes),
+    HttpModule
   ],
   providers: [
     ContactsService

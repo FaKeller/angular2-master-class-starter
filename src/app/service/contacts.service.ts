@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Contact } from '../models/contact';
-import { CONTACT_DATA } from '../data/contact-data';
+import { Observable } from 'rxjs';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class ContactsService {
 
-  private contacts: Contact[] = CONTACT_DATA;
+  private static API_ENDPOINT = 'http://localhost:4201/api/contacts';
 
-  getContacts(): Promise<Contact[]> {
-    return new Promise((resolve, reject) => {
-      resolve(this.contacts);
-    });
+  constructor(private http: Http) {
   }
 
-  getContact(id: number|string): Promise<Contact> {
-    return new Promise((resolve, reject) => {
-      var contact = this.contacts.filter((cur: Contact) => cur.id == id);
-      if (contact.length > 0) {
-        resolve(contact[0]);
-      } else {
-        reject();
-      }
-    });
+  getContacts(): Observable<Contact[]> {
+    return this.http.get(ContactsService.API_ENDPOINT)
+      .map(res => res.json())
+      .map(data => data.items);
+  }
+
+  getContact(id: number|string): Observable<Contact> {
+    return this.http.get(`${ContactsService.API_ENDPOINT}/${id}`)
+      .map(res => res.json())
+      .map(data => data.item);
   }
 }
