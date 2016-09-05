@@ -74,7 +74,7 @@
         </fieldset>
       </div>
       <div class="card-action">
-        <a class="btn grey" [routerLink]="['/contact', contact.id]">Cancel</a>
+        <button type="button" class="btn grey" (click)="cancel(contact)">Cancel</button>
         <button type="button" class="btn" (click)="save(contact)">Save</button>
       </div>
     </div>

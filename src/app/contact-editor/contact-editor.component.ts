@@ -19,8 +19,16 @@ export class ContactEditorComponent implements OnInit {
     this.contactService.getContact(this.route.snapshot.params['id']).subscribe(contact => this.contact = contact);
   }
 
+  cancel(contact: Contact) {
+    this.gotoDetails(contact);
+  }
+
   save(contact: Contact) {
-    this.contactService.updateContact(contact).subscribe(() => this.router.navigate(['/contact', contact.id]));
+    this.contactService.updateContact(contact).subscribe(() => this.gotoDetails(contact));
+  }
+
+  private gotoDetails(contact: Contact) {
+    this.router.navigate(['/contact', contact.id]);
   }
 
 }
