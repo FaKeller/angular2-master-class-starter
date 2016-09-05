@@ -5,12 +5,20 @@ import { ContactsHeaderComponent } from './contacts-header/contacts-header.compo
 import { ContactsListComponent } from './contacts-list/contacts-list.component';
 import { RouterModule } from '@angular/router';
 import { ContactsAppRoutes } from './app.routes';
+import { ContactsService } from './service/contacts.service';
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsHeaderComponent, ContactsListComponent],
+  declarations: [
+    ContactsAppComponent,
+    ContactsHeaderComponent,
+    ContactsListComponent
+  ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ContactsAppRoutes)
+  ],
+  providers: [
+    ContactsService
   ],
   bootstrap: [ContactsAppComponent]
 })
