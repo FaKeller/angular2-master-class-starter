@@ -12,4 +12,15 @@ export class ContactsService {
       resolve(this.contacts);
     });
   }
+
+  getContact(id: number|string): Promise<Contact> {
+    return new Promise((resolve, reject) => {
+      var contact = this.contacts.filter((cur: Contact) => cur.id == id);
+      if (contact.length > 0) {
+        resolve(contact[0]);
+      } else {
+        reject();
+      }
+    });
+  }
 }
