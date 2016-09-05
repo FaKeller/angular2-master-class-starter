@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ContactEditorComponent } from './contact-editor/contact-editor.component';
 import { FormsModule } from '@angular/forms';
+import { API_ENDPOINT } from './app.tokens';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     ContactsService,
-    {provide: 'API_ENDPOINT', useValue: 'http://localhost:4201/api/contacts'}
+    {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api/contacts'}
   ],
   bootstrap: [ContactsAppComponent]
 })
