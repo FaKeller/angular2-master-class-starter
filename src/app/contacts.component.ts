@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Contact } from './models/contact';
-import { CONTACT_DATA } from './data/contact-data';
+import { ContactsService } from './service/contacts.service';
 
 @Component({
   selector: 'trm-contacts-app',
   templateUrl: 'contacts.component.html',
-  styleUrls: ['contacts.component.css']
+  styleUrls: ['contacts.component.css'],
+  providers: [ContactsService]
 })
-export class ContactsAppComponent {
-  title = 'Angular 2 Master Class setup works!';
+export class ContactsAppComponent implements OnInit {
 
-  private contacts: Contact[] = CONTACT_DATA;
+  private contacts: Contact[];
+
+  constructor(private contactsService: ContactsService) {
+  }
+
+  ngOnInit(): void {
+    this.contactsService.getContacts().then((contacts) => this.contacts = contacts);
+  }
 }
+
