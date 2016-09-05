@@ -9,21 +9,25 @@ import { ContactsService } from './service/contacts.service';
 import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
 import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { ContactEditorComponent } from './contact-editor/contact-editor.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ContactsAppComponent,
     ContactsHeaderComponent,
     ContactsListComponent,
-    ContactsDetailComponent
+    ContactsDetailComponent, ContactEditorComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ContactsAppRoutes),
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [
-    ContactsService
+    ContactsService,
+    {provide: 'API_ENDPOINT', useValue: 'http://localhost:4201/api/contacts'}
   ],
   bootstrap: [ContactsAppComponent]
 })
