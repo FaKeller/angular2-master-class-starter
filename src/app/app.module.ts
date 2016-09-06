@@ -9,6 +9,7 @@ import { ContactsService } from './service/contacts.service';
 import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
 import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 import { ContactEditorComponent } from './contact-editor/contact-editor.component';
 import { FormsModule } from '@angular/forms';
 import { API_ENDPOINT } from './app.tokens';
