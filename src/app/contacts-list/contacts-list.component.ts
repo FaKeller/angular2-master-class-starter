@@ -18,7 +18,10 @@ export class ContactsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contacts = Observable.merge(this.contactsService.getContacts(), this.contactsService.search(this.terms$));
+    this.contacts = Observable.merge(
+      this.contactsService.getContacts().takeUntil(this.terms$),
+      this.contactsService.search(this.terms$)
+    );
   }
 
 }
