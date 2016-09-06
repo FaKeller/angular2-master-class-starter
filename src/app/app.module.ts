@@ -10,6 +10,9 @@ import { ContactsDetailComponent } from './contacts-detail/contacts-detail.compo
 import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 import { ContactEditorComponent } from './contact-editor/contact-editor.component';
 import { FormsModule } from '@angular/forms';
 import { API_ENDPOINT } from './app.tokens';

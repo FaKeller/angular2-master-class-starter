@@ -26,9 +26,22 @@ export class ContactsService {
     return this.http.put(`${this.API_ENDPOINT}/contacts/${contact.id}`, contact);
   }
 
-  search(term: string): Observable<Contact[]> {
+  public search(terms: Observable<string>, debounceMs = 400): Observable<Contact[]> {
+    return this.awesomeSearch<Contact[]>(terms, (term) => this.rawSearch(term), debounceMs);
+  }
+
+  private rawSearch(term: string): Observable<Contact[]> {
     return this.http.get(`${this.API_ENDPOINT}/search?text=${term}`)
       .map(res => res.json())
       .map(data => data.items);
+  }
+
+  // reusable search observable builder
+  private awesomeSearch<T>(terms$: Observable<string>,
+                           search: (term: string) => Observable<T>,
+                           debounceMs = 250): Observable<T> {
+    return terms$.debounceTime(debounceMs)
+      .distinctUntilChanged()
+      .switchMap(term => search(term));
   }
 }
