@@ -16,13 +16,14 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { ContactEditorComponent } from './contact-editor/contact-editor.component';
 import { FormsModule } from '@angular/forms';
 import { API_ENDPOINT } from './app.tokens';
+import { ContactDetailsUiComponent } from './contact-details-ui/contact-details-ui.component';
 
 @NgModule({
   declarations: [
     ContactsAppComponent,
     ContactsHeaderComponent,
     ContactsListComponent,
-    ContactsDetailComponent, ContactEditorComponent
+    ContactsDetailComponent, ContactEditorComponent, ContactDetailsUiComponent
   ],
   imports: [
     BrowserModule,
