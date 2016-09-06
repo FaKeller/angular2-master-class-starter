@@ -25,4 +25,10 @@ export class ContactsService {
   updateContact(contact: Contact): Observable<any> {
     return this.http.put(`${this.API_ENDPOINT}/${contact.id}`, contact);
   }
+
+  search(term: string): Observable<Contact[]> {
+    return this.getContacts().map((contacts: Contact[]) => {
+      return contacts.filter((contact: Contact) => -1 != contact.name.toLowerCase().indexOf(term));
+    });
+  }
 }
