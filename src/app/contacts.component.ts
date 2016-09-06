@@ -4,7 +4,6 @@ import { Title } from '@angular/platform-browser';
 
 export const CHANGE_TITLE_EVENT = 'CHANGE_TITLE_EVENT';
 
-
 @Component({
   selector: 'trm-contacts-app',
   template: '<trm-contacts-header>{{title}}</trm-contacts-header><router-outlet></router-outlet>',
@@ -18,7 +17,7 @@ export class ContactsAppComponent {
   }
 
   ngOnInit() {
-    this.events.observe(CHANGE_TITLE_EVENT).subscribe(title => {
+    this.events.observe<string>(CHANGE_TITLE_EVENT).subscribe(title => {
       this.title = title;
       this.titleService.setTitle(title);
     });

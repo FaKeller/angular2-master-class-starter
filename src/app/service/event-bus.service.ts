@@ -15,10 +15,10 @@ export class EventBusService {
     this._messages$.next(new Event(eventType, data));
   }
 
-  observe(eventType: string) {
+  observe<T>(eventType: string) {
     return this._messages$
       .filter(event => event.eventType == eventType)
-      .map(event => event.data);
+      .map(event => event.data as T);
   }
 
 }
