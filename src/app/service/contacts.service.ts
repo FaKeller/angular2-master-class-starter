@@ -11,24 +11,24 @@ export class ContactsService {
   }
 
   getContacts(): Observable<Contact[]> {
-    return this.http.get(this.API_ENDPOINT)
+    return this.http.get(`${this.API_ENDPOINT}/contacts`)
       .map(res => res.json())
       .map(data => data.items);
   }
 
   getContact(id: number|string): Observable<Contact> {
-    return this.http.get(`${this.API_ENDPOINT}/${id}`)
+    return this.http.get(`${this.API_ENDPOINT}/contacts/${id}`)
       .map(res => res.json())
       .map(data => data.item);
   }
 
   updateContact(contact: Contact): Observable<any> {
-    return this.http.put(`${this.API_ENDPOINT}/${contact.id}`, contact);
+    return this.http.put(`${this.API_ENDPOINT}/contacts/${contact.id}`, contact);
   }
 
   search(term: string): Observable<Contact[]> {
-    return this.getContacts().map((contacts: Contact[]) => {
-      return contacts.filter((contact: Contact) => -1 != contact.name.toLowerCase().indexOf(term));
-    });
+    return this.http.get(`${this.API_ENDPOINT}/search?text=${term}`)
+      .map(res => res.json())
+      .map(data => data.items);
   }
 }

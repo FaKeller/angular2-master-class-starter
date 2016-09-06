@@ -28,7 +28,7 @@ import { API_ENDPOINT } from './app.tokens';
   ],
   providers: [
     ContactsService,
-    {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api/contacts'}
+    {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api'}
   ],
   bootstrap: [ContactsAppComponent]
 })
