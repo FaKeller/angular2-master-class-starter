@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ContactsAppComponent } from './contacts.component';
 import { ContactsHeaderComponent } from './contacts-header/contacts-header.component';
@@ -17,6 +17,7 @@ import { ContactEditorComponent } from './contact-editor/contact-editor.componen
 import { FormsModule } from '@angular/forms';
 import { API_ENDPOINT } from './app.tokens';
 import { ContactDetailsUiComponent } from './contact-details-ui/contact-details-ui.component';
+import { EventBusService } from './service/event-bus.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { ContactDetailsUiComponent } from './contact-details-ui/contact-details-
   ],
   providers: [
     ContactsService,
-    {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api'}
+    {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api'},
+    EventBusService,
+    Title
   ],
   bootstrap: [ContactsAppComponent]
 })
