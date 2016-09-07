@@ -18,11 +18,12 @@ export class ContactsDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.params['id'];
-    this.contactsService.getContact(id).subscribe((contact: Contact) => {
-      this.contact = contact;
-      this.events.emit(CHANGE_TITLE_EVENT, contact.name);
-    });
+    let id = this.route.params
+      .switchMap(params => this.contactsService.getContact(params['id']))
+      .subscribe((contact: Contact) => {
+        this.contact = contact;
+        this.events.emit(CHANGE_TITLE_EVENT, contact.name);
+      });
   }
 
   private navigateToEditor(contact: Contact) {

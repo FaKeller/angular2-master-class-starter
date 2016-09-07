@@ -18,13 +18,19 @@ import { FormsModule } from '@angular/forms';
 import { API_ENDPOINT } from './app.tokens';
 import { ContactDetailsUiComponent } from './contact-details-ui/contact-details-ui.component';
 import { EventBusService } from './service/event-bus.service';
+import { ContactsDashboardComponent } from './contacts-dashboard/contacts-dashboard.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     ContactsAppComponent,
     ContactsHeaderComponent,
     ContactsListComponent,
-    ContactsDetailComponent, ContactEditorComponent, ContactDetailsUiComponent
+    ContactsDetailComponent,
+    ContactEditorComponent,
+    ContactDetailsUiComponent,
+    ContactsDashboardComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
